@@ -1,5 +1,4 @@
 <?php
-    $id='';
     if (isset($_POST['add'])){
         if (empty($_POST['album'] || empty($_POST['artist']) || empty($_POST['album'] || empty($_POST['artist'])))){
             $errors['album']="Field cannot be Empty";
@@ -8,7 +7,7 @@
             $artist= $_POST['artist'];
             $band= $_POST['band'];
             $rating= $_POST['rating'];
-            $id= '';
+            $id= $_POST['id'];
             if ((!preg_match('/^[a-zA-Z\s]+$/', $album))){
                 $errors['album']="Invalid Album Name";
             }

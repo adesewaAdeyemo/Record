@@ -28,21 +28,6 @@
             }
         }
 
-        // echo 'id = '. $id;
-        // If (array_filter($errors)){
-        //     echo '<center>';
-        //     echo "<div class='hero-error'>Error in the form</div>";
-        //     echo '</center>';
-        // }else{
-            // include('conn.php');
-            // $query="UPDATE `highlife` SET `song_name` = '$album', `artist` = '$artist', `band_id` = '$band', `rating` = '$rating' WHERE id=$id";
-            // if(mysqli_query($conn, $query)){
-            //     // header("Location: record.php");
-            //    echo "Updated successfully";
-            // }else{
-            //     $error= "error: ". mysqli_error($conn);
-            // }
-        // }  
         If (array_filter($errors)){
             echo '<center>';
             echo "<div class='hero-error'>Error in the form</div>";

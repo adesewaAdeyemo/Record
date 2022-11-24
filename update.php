@@ -1,5 +1,4 @@
 <?php
-session_start();
 $value= "Update";
 $_id=$error=$content='';    
 $album=$artist=$band=$rating=$id='';
@@ -43,7 +42,7 @@ if (isset($_POST['confirmid'])){
                 $id= $row['id'];
             }
         }
-        // echo "id    _= ". $id;
+
         if (isset($_POST['add'])){
             If (array_filter($errors)){
                 echo '<center>';
@@ -63,7 +62,7 @@ if (isset($_POST['confirmid'])){
                     echo"Oooops!";
                 }
                 echo "id    _= ". $newid;
-                // $id=$_id;
+                // $newid=31;
                 // $query="UPDATE `highlife` SET `song_name` = 'miss', `artist` = 'Me', `band_id` = '1', `rating` = '10' WHERE `highlife`.`id` = 21";
                 $query="UPDATE `highlife` SET `song_name` = '$newalbum', `artist` = '$newartist', `band_id` = '$newband', `rating` = '$newrating' WHERE id=$newid";
                 // $query="UPDATE `highlife` SET song_name = $newalbum, artist = $newartist, band_id = $newband, rating = $newrating WHERE id=$_id";
