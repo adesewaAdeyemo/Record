@@ -29,6 +29,9 @@ form{
     box-shadow: 1px 1px 1px rgb(229, 233, 233), -1px -1px 1px rgb(193, 208, 208);
 
 }
+.form{
+    margin-top: 20%;
+}
 label{
     position: relative;
 }

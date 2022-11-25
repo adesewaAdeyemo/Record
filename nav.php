@@ -1,6 +1,6 @@
 <?php
 $a = '<a href="record.php">MASTER RECORD</a>';
-$b = '<a href="editall.php">EDIT RECORD</a>';
+$b = '<a href="edit.php">EDIT RECORD</a>';
 $c = '<a href="add.php">ADD TO RECORD</a>';
 $d = '<a href="update.php">UPDATE RECORD</a>';
 $e = '<a href="delete.php">DELETE RECORD</a>';

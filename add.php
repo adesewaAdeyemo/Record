@@ -9,6 +9,7 @@
 </head>
 <body>
     <?php 
+        $id='';
         $error='';
         $value = "Add to record";
         $album=$artist=$band=$rating='';

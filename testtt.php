@@ -3,17 +3,18 @@
     $sql = "SELECT * FROM highlife";
     $allresult = mysqli_query($conn, $sql);
     $error='';
+    $album=$artist=$band=$rating=$id=$i='';
     $errors= array('album'=>'', 'artist'=>'', 'band'=>'', 'rating'=>'');
-
-    if (isset($_POST['edit'])){
-        $album= $_POST['album'];
-        $artist= $_POST['artist'];
-        $band= $_POST['band'];
-        $rating= $_POST['rating'];
-        $id= $_POST['id'];
-        if (empty($_POST['album'] || empty($_POST['artist']) || empty($_POST['album'] || empty($_POST['artist'])))){
+    if (isset($_POST["edit$i"])){
+        header("Location: record.php");
+        if (empty($_POST["album$i"] || empty($_POST["artist$i"]) || empty($_POST["album$i"] || empty($_POST["artist$i"])))){
             $errors['album']="Field cannot be Empty";
         }else{
+            $album= $_POST["album$i"];
+            $artist= $_POST["artist$i"];
+            $band= $_POST["band$i"];
+            $rating= $_POST["rating$i"];
+            $id= $_POST["id$i"];
             if ((!preg_match('/^[a-zA-Z\s]+$/', $album))){
                 $errors['album']="Invalid Album Name";
             }
@@ -27,26 +28,26 @@
                 $errors['rating']="Invalid rating";
             }
         }
-
+    
         If (array_filter($errors)){
             echo '<center>';
             echo "<div class='hero-error'>Error in the form</div>";
             echo '</center>';
         }else{
-            global $id;
-            $newid=$_POST['id'];
-            $newalbum=$_POST['album'];
-            $newartist=$_POST['artist'];
-            $newband=$_POST['band'];
-            $newrating=$_POST['rating'];
+            // $newid=$_POST['id'];
+            // $newalbum=$_POST['album'];
+            // $newartist=$_POST['artist'];
+            // $newband=$_POST['band'];
+            // $newrating=$_POST['rating'];
             include("conn.php");
             if($conn){
-                echo"Hurray its $newid";
+                echo"Hurray its $id";
             }else{
                 echo"Oooops!";
             }
-            echo "id    _= ". $newid;
-            $query="UPDATE `highlife` SET `song_name` = '$newalbum', `artist` = '$newartist', `band_id` = '$newband', `rating` = '$newrating' WHERE id=$newid";
+            echo "id    _= ". $id;
+            // $query="UPDATE `highlife` SET `song_name` = '$newalbum', `artist` = '$newartist', `band_id` = '$newband', `rating` = '$newrating' WHERE id=$newid";
+            $query="UPDATE `highlife` SET `song_name` = '$album', `artist` = '$artist', `band_id` = '$band', `rating` = '$rating' WHERE id=$id";
             if(mysqli_query($conn,$query)){
                 // header("Location: record.php");
                 echo "Updated successfully";
@@ -86,26 +87,34 @@
             echo'<td><strong><center>Rating</center></strong></td>';
             echo'<td><strong><center>Save</center></strong></td>';
         echo '</tr>';
-
+        $i=0;
         while ($row = mysqli_fetch_assoc($allresult)){
         echo '<tr>';
-            echo'<td><input type="text" name="album" style="border:none;" value="'. $row['song_name'] .'"></td>';
+            echo "<td><input type='text' name='album$i' style='border:none;' value='". $row['song_name'] ."'></td>";
             echo'<div class="error">'. $errors['album'] .'</div>';
-            echo'<td><input type="text" name="artist" style="border:none;" value="'. $row['artist'] .'"></td>';
+            echo "<td><input type='text' name='artist$i' style='border:none;' value='". $row['artist'] ."'></td>";
             echo'<div class="error">'. $errors['artist'] .'</div>';
-            echo'<td><center><input type="text" name="band" style="border:none;" value="'. $row['band_id'] .'"></center></td>';
+            echo "<td><input type='text' name='band$i' style='border:none;' value='". $row['band_id'] ."'></td>";
             echo'<div class="error">'. $errors['band'] .'</div>';
-            echo'<td><center><input type="text" name="rating" style="border:none;" value="'. $row['rating'] .'"></center></td>';
+            echo "<td><input type='text' name='rating$i' style='border:none;' value='". $row['rating'] ."'></td>";
             echo'<div class="error">'. $errors['rating'] .'</div>';
-            echo'<input type="hidden" name="id" value="'. $row['id'] .'">';
-            echo'<td><input type="submit" name="edit" id="edit" style="border:none;" value="+"></td>';
-            echo'<div class="error">'. $error .'</div>';
+            echo"<input type='hidden' name='id$i' value='". $row['id'] ."'>";
+            echo"<td><input type='submit' name='edit$i' id='edit' style='border:none;' value='+'></td>";
+            echo'<div class="hero-error">'. $error .'</div>';
         echo '</tr>';
+        $i++;
         }
         echo '</table';
     echo '</form></center>';
 
-    ?>
+    echo "<p>". $album ."</p>";
+    echo "<p>". $artist ."</p>";
+    echo "<p>". $band ."</p>";
+    echo "<p>". $rating ."</p>";
+    echo "<p>". $id ."</p>";
+    echo "<p>show thegvjk;hiuvyugcfghbvknmnkjhnm btyfvcgdfdfcghv gufgvbjokljkn</p>";
+?>
+
 
 <script>
         document.querySelectorAll('submit').addEventListener(click,(e) =>{
